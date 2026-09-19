@@ -1,3 +1,5 @@
+const API_URL = (import.meta.env.VITE_API_URL || "/api").replace(/\/$/, "");
+
 const authContainer = document.getElementById("authContainer");
 const switchMode = document.getElementById("switchMode");
 const panelTitle = document.getElementById("panelTitle");
@@ -41,6 +43,22 @@ function atualizarModo() {
     panelDescription.textContent = "Gerencie pacientes, médicos e consultas através de uma plataforma simples, segura e moderna.";
     panelQuestion.textContent = "Ainda não possui uma conta?";
     switchMode.textContent = "Cadastre-se";
+  }
+}
+
+async function lerResposta(resposta) {
+  const texto = await resposta.text();
+
+  if (!texto) return null;
+
+  try {
+    return JSON.parse(texto);
+  } catch {
+    throw new Error(
+      resposta.ok
+        ? "A API respondeu em um formato inesperado."
+        : "Não foi possível comunicar com o servidor."
+    );
   }
 }
 
@@ -107,14 +125,14 @@ loginForm.addEventListener("submit", async (event) => {
     btnEntrar.disabled = true;
     btnEntrar.textContent = "Entrando...";
 
-    const resposta = await fetch("/api/login", {
+    const resposta = await fetch(`${API_URL}/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, senha }),
     });
 
-    const dados = await resposta.json();
-    if (!resposta.ok) throw new Error(dados.erro || "Não foi possível realizar o login.");
+    const dados = await lerResposta(resposta);
+    if (!resposta.ok) throw new Error(dados?.erro || "Não foi possível realizar o login.");
 
     localStorage.setItem("token", dados.token);
     localStorage.setItem("usuario", JSON.stringify(dados.usuario));
@@ -154,14 +172,14 @@ cadastroForm.addEventListener("submit", async (event) => {
     btnCadastrar.disabled = true;
     btnCadastrar.textContent = "Criando conta...";
 
-    const resposta = await fetch("/api/usuarios", {
+    const resposta = await fetch(`${API_URL}/usuarios`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ nome, email, senha }),
     });
 
-    const dados = await resposta.json();
-    if (!resposta.ok) throw new Error(dados.erro || "Não foi possível criar sua conta.");
+    const dados = await lerResposta(resposta);
+    if (!resposta.ok) throw new Error(dados?.erro || "Não foi possível criar sua conta.");
 
     mostrarMensagem(mensagemCadastro, "Conta criada com sucesso!", "sucesso");
     loginEmail.value = email;

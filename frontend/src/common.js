@@ -1,3 +1,6 @@
+// URL da API: Railway em produção e proxy /api no desenvolvimento
+const API_URL = (import.meta.env.VITE_API_URL || "/api").replace(/\/$/, "");
+
 // Recupera a sessão do usuário
 const token = localStorage.getItem("token");
 
@@ -15,7 +18,7 @@ export async function apiFetch(endpoint, options = {}) {
     ...(options.headers || {}),
   };
 
-  const resposta = await fetch(`/api/${endpoint}`, {
+  const resposta = await fetch(`${API_URL}/${endpoint}`, {
     ...options,
     headers,
   });
