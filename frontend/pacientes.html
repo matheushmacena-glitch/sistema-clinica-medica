@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2783b2">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/src/app.css" as="style">
+  <link rel="stylesheet" href="/src/app.css">
+  <link rel="prefetch" href="/dashboard.html"><link rel="prefetch" href="/medicos.html"><link rel="prefetch" href="/consultas.html">
+  <title>MediFlow | Pacientes</title>
+</head>
+<body>
+<div class="sistema">
+  <aside class="sidebar">
+    <div class="logo"><div class="logo-icon"><svg class="icon" aria-hidden="true"><use href="/mediflow-icons.svg#logo"></use></svg></div><div><strong>MediFlow</strong><small>Gestão Clínica</small></div></div>
+    <nav class="menu"><a href="/dashboard.html"><svg class="icon" aria-hidden="true"><use href="/mediflow-icons.svg#dashboard"></use></svg><span>Dashboard</span></a><a href="/pacientes.html" class="ativo"><svg class="icon" aria-hidden="true"><use href="/mediflow-icons.svg#users"></use></svg><span>Pacientes</span></a><a href="/medicos.html"><svg class="icon" aria-hidden="true"><use href="/mediflow-icons.svg#doctor"></use></svg><span>Médicos</span></a><a href="/consultas.html"><svg class="icon" aria-hidden="true"><use href="/mediflow-icons.svg#calendar"></use></svg><span>Consultas</span></a></nav>
+    <button class="btn-sair" type="button"><svg class="icon" aria-hidden="true"><use href="/mediflow-icons.svg#logout"></use></svg><span>Sair</span></button>
+  </aside>
+  <main class="conteudo">
+    <header class="topbar"><div><h1>Pacientes</h1><p>Cadastro e gerenciamento de pacientes.</p></div><div class="usuario"><svg class="icon" aria-hidden="true"><use href="/mediflow-icons.svg#user"></use></svg><span class="nome-usuario"></span></div></header>
+    
+<section class="painel">
+  <div class="painel-topo"><h2 id="tituloForm">Novo paciente</h2></div>
+  <form id="formPaciente" class="form-grid">
+    <input type="hidden" id="pacienteId">
+    <div class="campo"><label for="nome">Nome</label><input id="nome" type="text" autocomplete="name" required></div>
+    <div class="campo"><label for="cpf">CPF</label><input id="cpf" type="text" inputmode="numeric" required></div>
+    <div class="campo"><label for="telefone">Telefone</label><input id="telefone" type="tel" autocomplete="tel"></div>
+    <div class="campo"><label for="email">E-mail</label><input id="email" type="email" autocomplete="email"></div>
+    <div class="campo"><label for="dataNascimento">Data de nascimento</label><input id="dataNascimento" type="date"></div>
+    <div class="campo"><label for="cep">CEP — ViaCEP</label><input id="cep" type="text" inputmode="numeric" maxlength="9" placeholder="86000-000"></div>
+    <div class="campo full"><label for="endereco">Endereço consultado</label><input id="endereco" type="text" readonly placeholder="Preencha o CEP para consultar"></div>
+    <div class="botoes-form"><button class="btn btn-primary" type="submit"><svg class="icon" aria-hidden="true"><use href="/mediflow-icons.svg#save"></use></svg><span>Salvar paciente</span></button><button class="btn btn-secundario" type="button" id="btnCancelar"><svg class="icon" aria-hidden="true"><use href="/mediflow-icons.svg#x"></use></svg><span>Cancelar edição</span></button></div>
+  </form>
+</section>
+<section class="painel">
+  <div class="painel-topo"><h2>Pacientes cadastrados</h2><div class="busca-wrap"><svg class="icon" aria-hidden="true"><use href="/mediflow-icons.svg#search"></use></svg><input class="busca-input" id="busca" type="search" placeholder="Pesquisar pelo nome..."></div></div>
+  <div class="tabela-container"><table><thead><tr><th>Nome</th><th>CPF</th><th>Telefone</th><th>E-mail</th><th>Ações</th></tr></thead><tbody id="listaPacientes"></tbody></table></div>
+</section>
+  </main>
+</div>
+<script type="module" src="/src/pacientes.js"></script>
+</body>
+</html>

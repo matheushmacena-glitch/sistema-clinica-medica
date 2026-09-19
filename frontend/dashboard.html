@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2783b2">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/src/app.css" as="style">
+  <link rel="stylesheet" href="/src/app.css">
+  <link rel="prefetch" href="/pacientes.html"><link rel="prefetch" href="/medicos.html"><link rel="prefetch" href="/consultas.html">
+  <title>MediFlow | Dashboard</title>
+</head>
+<body>
+<div class="sistema">
+  <aside class="sidebar">
+    <div class="logo"><div class="logo-icon"><svg class="icon" aria-hidden="true"><use href="/mediflow-icons.svg#logo"></use></svg></div><div><strong>MediFlow</strong><small>Gestão Clínica</small></div></div>
+    <nav class="menu"><a href="/dashboard.html" class="ativo"><svg class="icon" aria-hidden="true"><use href="/mediflow-icons.svg#dashboard"></use></svg><span>Dashboard</span></a><a href="/pacientes.html"><svg class="icon" aria-hidden="true"><use href="/mediflow-icons.svg#users"></use></svg><span>Pacientes</span></a><a href="/medicos.html"><svg class="icon" aria-hidden="true"><use href="/mediflow-icons.svg#doctor"></use></svg><span>Médicos</span></a><a href="/consultas.html"><svg class="icon" aria-hidden="true"><use href="/mediflow-icons.svg#calendar"></use></svg><span>Consultas</span></a></nav>
+    <button class="btn-sair" type="button"><svg class="icon" aria-hidden="true"><use href="/mediflow-icons.svg#logout"></use></svg><span>Sair</span></button>
+  </aside>
+  <main class="conteudo">
+    <header class="topbar"><div><h1>Dashboard</h1><p>Visão geral do funcionamento da clínica.</p></div><div class="usuario"><svg class="icon" aria-hidden="true"><use href="/mediflow-icons.svg#user"></use></svg><span class="nome-usuario"></span></div></header>
+    
+<section class="cards">
+  <article class="card-info"><div class="icone"><svg class="icon" aria-hidden="true"><use href="/mediflow-icons.svg#users"></use></svg></div><h2 id="totalPacientes">0</h2><p>Pacientes cadastrados</p></article>
+  <article class="card-info"><div class="icone"><svg class="icon" aria-hidden="true"><use href="/mediflow-icons.svg#doctor"></use></svg></div><h2 id="totalMedicos">0</h2><p>Médicos cadastrados</p></article>
+  <article class="card-info"><div class="icone"><svg class="icon" aria-hidden="true"><use href="/mediflow-icons.svg#calendar"></use></svg></div><h2 id="totalConsultas">0</h2><p>Consultas registradas</p></article>
+</section>
+<section class="painel">
+  <div class="painel-topo"><h2>Consultas recentes</h2><a href="/consultas.html" class="btn btn-primary"><svg class="icon" aria-hidden="true"><use href="/mediflow-icons.svg#arrow"></use></svg><span>Ver consultas</span></a></div>
+  <div class="tabela-container"><table><thead><tr><th>Paciente</th><th>Médico</th><th>Data</th><th>Status</th></tr></thead><tbody id="consultasRecentes"></tbody></table></div>
+</section>
+  </main>
+</div>
+<script type="module" src="/src/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+// Gera o cliente do Prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Banco de dados SQLite
+datasource db {
+  provider = "sqlite"
+}
+
+// Usuários do sistema
+model Usuario {
+  id        Int        @id @default(autoincrement())
+  nome      String
+  email     String     @unique
+  senha     String
+  pacientes Paciente[]
+  medicos   Medico[]
+  consultas Consulta[]
+}
+
+// Pacientes de cada usuário
+model Paciente {
+  id             Int        @id @default(autoincrement())
+  nome           String
+  cpf            String
+  telefone       String?
+  email          String?
+  dataNascimento DateTime?
+
+  usuarioId Int
+  usuario   Usuario @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+
+  consultas Consulta[]
+
+  @@unique([usuarioId, cpf])
+  @@index([usuarioId])
+}
+
+// Médicos de cada usuário
+model Medico {
+  id            Int        @id @default(autoincrement())
+  nome          String
+  crm           String
+  especialidade String
+
+  usuarioId Int
+  usuario   Usuario @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+
+  consultas Consulta[]
+
+  @@unique([usuarioId, crm])
+  @@index([usuarioId])
+}
+
+// Consultas ligadas ao usuário, paciente e médico
+model Consulta {
+  id     Int      @id @default(autoincrement())
+  data   DateTime
+  status String   @default("AGENDADA")
+
+  usuarioId Int
+  usuario   Usuario @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+
+  pacienteId Int
+  paciente   Paciente @relation(fields: [pacienteId], references: [id])
+
+  medicoId Int
+  medico   Medico @relation(fields: [medicoId], references: [id])
+
+  @@index([usuarioId])
+  @@index([pacienteId])
+  @@index([medicoId])
+}

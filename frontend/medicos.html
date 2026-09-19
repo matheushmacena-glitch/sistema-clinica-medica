@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2783b2">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/src/app.css" as="style">
+  <link rel="stylesheet" href="/src/app.css">
+  <link rel="prefetch" href="/dashboard.html"><link rel="prefetch" href="/pacientes.html"><link rel="prefetch" href="/consultas.html">
+  <title>MediFlow | Médicos</title>
+</head>
+<body>
+<div class="sistema">
+  <aside class="sidebar">
+    <div class="logo"><div class="logo-icon"><svg class="icon" aria-hidden="true"><use href="/mediflow-icons.svg#logo"></use></svg></div><div><strong>MediFlow</strong><small>Gestão Clínica</small></div></div>
+    <nav class="menu"><a href="/dashboard.html"><svg class="icon" aria-hidden="true"><use href="/mediflow-icons.svg#dashboard"></use></svg><span>Dashboard</span></a><a href="/pacientes.html"><svg class="icon" aria-hidden="true"><use href="/mediflow-icons.svg#users"></use></svg><span>Pacientes</span></a><a href="/medicos.html" class="ativo"><svg class="icon" aria-hidden="true"><use href="/mediflow-icons.svg#doctor"></use></svg><span>Médicos</span></a><a href="/consultas.html"><svg class="icon" aria-hidden="true"><use href="/mediflow-icons.svg#calendar"></use></svg><span>Consultas</span></a></nav>
+    <button class="btn-sair" type="button"><svg class="icon" aria-hidden="true"><use href="/mediflow-icons.svg#logout"></use></svg><span>Sair</span></button>
+  </aside>
+  <main class="conteudo">
+    <header class="topbar"><div><h1>Médicos</h1><p>Gerencie médicos e especialidades.</p></div><div class="usuario"><svg class="icon" aria-hidden="true"><use href="/mediflow-icons.svg#user"></use></svg><span class="nome-usuario"></span></div></header>
+    
+<section class="painel">
+  <div class="painel-topo"><h2 id="tituloForm">Novo médico</h2></div>
+  <form id="formMedico" class="form-grid">
+    <input type="hidden" id="medicoId">
+    <div class="campo"><label for="nome">Nome</label><input id="nome" type="text" required></div>
+    <div class="campo"><label for="crm">CRM</label><input id="crm" type="text" required></div>
+    <div class="campo full"><label for="especialidade">Especialidade</label><input id="especialidade" type="text" required></div>
+    <div class="botoes-form"><button class="btn btn-primary" type="submit"><svg class="icon" aria-hidden="true"><use href="/mediflow-icons.svg#save"></use></svg><span>Salvar médico</span></button><button type="button" class="btn btn-secundario" id="btnCancelar"><svg class="icon" aria-hidden="true"><use href="/mediflow-icons.svg#x"></use></svg><span>Cancelar edição</span></button></div>
+  </form>
+</section>
+<section class="painel"><div class="painel-topo"><h2>Médicos cadastrados</h2></div><div class="tabela-container"><table><thead><tr><th>Nome</th><th>CRM</th><th>Especialidade</th><th>Ações</th></tr></thead><tbody id="listaMedicos"></tbody></table></div></section>
+  </main>
+</div>
+<script type="module" src="/src/medicos.js"></script>
+</body>
+</html>

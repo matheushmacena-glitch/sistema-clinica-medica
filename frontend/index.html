@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2783b2">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/src/style.css" as="style">
+  <link rel="stylesheet" href="/src/style.css">
+  <link rel="prefetch" href="/dashboard.html">
+  <title>MediFlow | Acesso</title>
+</head>
+<body>
+  <main class="auth-container" id="authContainer">
+    <section class="form-side cadastro-side">
+      <div class="form-card">
+        <div class="mobile-brand">
+          <div class="brand-icon"><svg><use href="/mediflow-icons.svg#logo"></use></svg></div>
+          <span>MediFlow</span>
+        </div>
+        <div class="form-header">
+          <span class="form-eyebrow">Comece agora</span>
+          <h2>Crie sua conta</h2>
+          <p>Cadastre-se para começar a gerenciar sua clínica pelo MediFlow.</p>
+        </div>
+        <form id="cadastroForm">
+          <div class="form-group"><label for="cadastroNome">Nome</label><input type="text" id="cadastroNome" placeholder="Digite seu nome" autocomplete="name" required></div>
+          <div class="form-group"><label for="cadastroEmail">E-mail</label><input type="email" id="cadastroEmail" placeholder="seu@email.com" autocomplete="email" required></div>
+          <div class="form-group"><label for="cadastroSenha">Senha</label><div class="password-container"><input type="password" id="cadastroSenha" placeholder="Crie uma senha" autocomplete="new-password" required><button type="button" class="show-password" data-target="cadastroSenha">Mostrar</button></div></div>
+          <div class="form-group"><label for="confirmarSenha">Confirmar senha</label><div class="password-container"><input type="password" id="confirmarSenha" placeholder="Digite a senha novamente" autocomplete="new-password" required><button type="button" class="show-password" data-target="confirmarSenha">Mostrar</button></div></div>
+          <div id="mensagemCadastro" class="mensagem"></div>
+          <button type="submit" id="btnCadastrar" class="primary-button">Criar conta</button>
+        </form>
+        <button type="button" class="mobile-switch" id="mobileIrLogin">Já possui uma conta? Entrar</button>
+      </div>
+    </section>
+
+    <section class="form-side login-side">
+      <div class="form-card">
+        <div class="mobile-brand">
+          <div class="brand-icon"><svg><use href="/mediflow-icons.svg#logo"></use></svg></div>
+          <span>MediFlow</span>
+        </div>
+        <div class="form-header">
+          <span class="form-eyebrow">Área segura</span>
+          <h2>Bem-vindo</h2>
+          <p>Entre na sua conta para acessar o sistema da clínica.</p>
+        </div>
+        <form id="loginForm">
+          <div class="form-group"><label for="loginEmail">E-mail</label><input type="email" id="loginEmail" placeholder="seu@email.com" autocomplete="email" required></div>
+          <div class="form-group"><label for="loginSenha">Senha</label><div class="password-container"><input type="password" id="loginSenha" placeholder="Digite sua senha" autocomplete="current-password" required><button type="button" class="show-password" data-target="loginSenha">Mostrar</button></div></div>
+          <div id="mensagemLogin" class="mensagem"></div>
+          <button type="submit" id="btnEntrar" class="primary-button">Entrar</button>
+        </form>
+        <button type="button" id="mobileIrCadastro" class="mobile-switch">Não possui uma conta? Cadastre-se</button>
+        <div class="security"><svg><use href="/mediflow-icons.svg#shield"></use></svg><span>Ambiente protegido com autenticação JWT</span></div>
+      </div>
+    </section>
+
+    <section class="moving-panel" id="movingPanel">
+      <div class="panel-inner">
+        <div class="brand"><div class="brand-icon"><svg><use href="/mediflow-icons.svg#logo"></use></svg></div><span>MediFlow</span></div>
+        <div class="panel-content">
+          <span class="badge" id="panelBadge">Gestão médica inteligente</span>
+          <h1 id="panelTitle">Sua clínica organizada em um só lugar.</h1>
+          <p id="panelDescription">Gerencie pacientes, médicos e consultas através de uma plataforma simples, segura e moderna.</p>
+          <div class="panel-actions"><div class="panel-question" id="panelQuestion">Ainda não possui uma conta?</div><button type="button" class="outline-button" id="switchMode">Cadastre-se</button></div>
+        </div>
+        <span class="decorative-line line-one"></span><span class="decorative-line line-two"></span>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
