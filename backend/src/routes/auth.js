@@ -61,6 +61,19 @@ router.post("/usuarios", async (req, res) => {
     });
   } catch (erro) {
     console.error("Erro ao cadastrar usuário:", erro);
+
+    if (erro?.code === "P2002") {
+      return res.status(409).json({
+        erro: "Já existe um usuário com esse e-mail.",
+      });
+    }
+
+    if (erro?.code === "P2021") {
+      return res.status(500).json({
+        erro: "O banco ainda não foi preparado. Rode as migrações e tente novamente.",
+      });
+    }
+
     return res.status(500).json({ erro: "Erro ao cadastrar usuário." });
   }
 });
