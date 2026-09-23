@@ -1,0 +1,21 @@
+{
+  "cleanUrls": false,
+  "rewrites": [
+    {
+      "source": "/dashboard",
+      "destination": "/dashboard.html"
+    },
+    {
+      "source": "/pacientes",
+      "destination": "/pacientes.html"
+    },
+    {
+      "source": "/medicos",
+      "destination": "/medicos.html"
+    },
+    {
+      "source": "/consultas",
+      "destination": "/consultas.html"
+    }
+  ]
+}
